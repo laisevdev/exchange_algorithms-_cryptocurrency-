@@ -286,6 +286,7 @@ def swap_crypto():
             saldo_btc.append(att_saldo_btc)
         elif len(saldo_prev_eth) > 0: 
             att_saldo_eth = float(saldo_prev_eth[-1] + troca_reais_eth)
+            saldo_eth.append(att_saldo_eth)
             print(f'Saldo atualizado de ethereum: {att_saldo_eth:.2f}')
 
             att_saldo_btc = float(saldo_prev_btc - amount_crypto)
@@ -318,6 +319,7 @@ def swap_crypto():
             saldo_btc.append(att_saldo_btc)
         elif len(saldo_prev_sol) > 0: 
             att_saldo_sol = float(saldo_prev_sol[-1] + troca_reais_sol)
+            saldo_sol.append(att_saldo_sol)
             print(f'Saldo atualizado de solana: {att_saldo_sol:.2f}')
 
             att_saldo_btc = float(saldo_prev_btc - amount_crypto)
@@ -350,6 +352,7 @@ def swap_crypto():
             saldo_btc.append(att_saldo_btc)
         elif len(saldo_prev_tia) > 0: 
             att_saldo_tia = float(saldo_prev_tia[-1] + troca_reais_tia)
+            saldo_tia.append(att_saldo_tia)
             print(f'Saldo atualizado de solana: {att_saldo_tia:.2f}')
 
             att_saldo_btc = float(saldo_prev_btc - amount_crypto)
@@ -382,6 +385,7 @@ def swap_crypto():
             saldo_eth.append(att_saldo_eth)
         elif len(saldo_prev_btc) > 0: 
             att_saldo_btc = float(saldo_prev_btc[-1] + troca_reais_btc)
+            saldo_btc.append(att_saldo_btc)
             print(f'Saldo atualizado de Bitcoins: {att_saldo_btc:.4f}')
 
             att_saldo_eth = float(saldo_prev_eth - amount_crypto)
@@ -415,6 +419,7 @@ def swap_crypto():
 
         elif len(saldo_prev_sol) > 0: 
             att_saldo_sol = float(saldo_prev_sol[-1] + troca_reais_sol)
+            saldo_sol.append(att_saldo_sol)
             print(f'Saldo atualizado de Bitcoins: {att_saldo_sol:.4f}')
 
             att_saldo_eth = float(saldo_prev_eth - amount_crypto)
@@ -448,6 +453,7 @@ def swap_crypto():
 
         elif len(saldo_prev_tia) > 0: 
             att_saldo_tia = float(saldo_prev_tia[-1] + troca_reais_tia)
+            saldo_tia.append(att_saldo_tia)
             print(f'Saldo atualizado de Bitcoins: {att_saldo_sol:.4f}')
 
             att_saldo_eth = float(saldo_prev_eth - amount_crypto)
@@ -481,6 +487,7 @@ def swap_crypto():
 
         elif len(saldo_prev_btc) > 0: 
             att_saldo_btc = float(saldo_prev_btc[-1] + troca_reais_btc)
+            saldo_btc.append(att_saldo_btc)
             print(f'Saldo atualizado de Bitcoins: {att_saldo_btc:.4f}')
 
             att_saldo_sol = float(saldo_prev_sol - amount_crypto)
@@ -592,6 +599,107 @@ def swap_crypto():
         else:
             print(f'Swap tia p btc deu errado!')
 
+    elif  choose == "TIA" and choose_2 == "BITCOIN": 
+
+        saldo_prev_tia = saldo_tia[-1]
+
+        troca_tia_reais = float(saldo_prev_tia * TIA) - (amount_crypto * TAXA_TROCA)
+        taxa_paga = amount_crypto * TAXA_TROCA
+        print(f'Suas Tias valem R${troca_tia_reais:.2f}. Valor da taxa: R${taxa_paga:.4f}')
+
+        troca_reais_btc = troca_tia_reais / BITCOIN
+        print(f'O total de Tia adquiridas é de: {troca_reais_btc:.4f}.')
+
+        saldo_prev_btc = saldo_btc
+
+        if not saldo_prev_btc:
+            print(f'Printa saldo_prev_tia {saldo_prev_btc:.4f}')
+            print(f'Não têm Bitcoin em carteira')            
+            saldo_btc.append(troca_reais_btc)
+            print(f'Saldo em Bitcoin: {troca_reais_btc:.4f}')
+
+            att_saldo_tia = float(saldo_prev_tia - amount_crypto)
+            print(f'Seu saldo em Tia é de: {att_saldo_tia:.4f}.')
+            saldo_tia.append(att_saldo_tia)
+
+        elif len(saldo_prev_btc) > 0: 
+            att_saldo_btc = float(saldo_prev_btc[-1] + troca_reais_btc)
+            saldo_btc.append(att_saldo_btc)
+            print(f'Saldo atualizado de Bitcoin: {att_saldo_btc:.4f}')
+
+            att_saldo_tia = float(saldo_prev_tia - amount_crypto)
+            print(f'Seu saldo em Tia é de: {att_saldo_tia:.4f}.')
+            saldo_sol.append(att_saldo_tia)
+        else:
+            print(f'Swap tia p btc deu errado!')
+
+    elif  choose == "TIA" and choose_2 == "ETHEREUM": 
+
+        saldo_prev_tia = saldo_tia[-1]
+
+        troca_tia_reais = float(saldo_prev_tia * TIA) - (amount_crypto * TAXA_TROCA)
+        taxa_paga = amount_crypto * TAXA_TROCA
+        print(f'Suas Tias valem R${troca_tia_reais:.2f}. Valor da taxa: R${taxa_paga:.4f}')
+
+        troca_reais_eth = troca_tia_reais / ETHEREUM
+        print(f'O total de Tia adquiridas é de: {troca_reais_eth:.4f}.')
+
+        saldo_prev_eth = saldo_eth
+
+        if not saldo_prev_eth:
+            print(f'Printa saldo_prev_eth {saldo_prev_eth:.4f}')
+            print(f'Não têm Ethereum em carteira')            
+            saldo_eth.append(troca_reais_eth)
+            print(f'Saldo em Ethereum: {troca_reais_eth:.4f}')
+
+            att_saldo_tia = float(saldo_prev_tia - amount_crypto)
+            print(f'Seu saldo em Tia é de: {att_saldo_tia:.4f}.')
+            saldo_tia.append(att_saldo_tia)
+
+        elif len(saldo_prev_eth) > 0: 
+            att_saldo_eth = float(saldo_prev_eth[-1] + troca_reais_eth)
+            saldo_eth.append(att_saldo_eth)
+            print(f'Saldo atualizado de Ethereum: {att_saldo_eth:.4f}')
+
+            att_saldo_tia = float(saldo_prev_tia - amount_crypto)
+            print(f'Seu saldo em Tia é de: {att_saldo_tia:.4f}.')
+            saldo_sol.append(att_saldo_tia)
+        else:
+            print(f'Swap tia p btc deu errado!')
+
+    elif  choose == "TIA" and choose_2 == "SOLANA": 
+
+        saldo_prev_tia = saldo_tia[-1]
+
+        troca_tia_reais = float(saldo_prev_tia * TIA) - (amount_crypto * TAXA_TROCA)
+        taxa_paga = amount_crypto * TAXA_TROCA
+        print(f'Suas Tias valem R${troca_tia_reais:.2f}. Valor da taxa: R${taxa_paga:.4f}')
+
+        troca_reais_sol = troca_tia_reais / SOLANA
+        print(f'O total de Solanas adquiridas é de: {troca_reais_sol:.4f}.')
+
+        saldo_prev_sol = saldo_sol
+
+        if not saldo_prev_sol:
+            print(f'Printa saldo_prev_eth {saldo_prev_sol:.4f}')
+            print(f'Não têm Ethereum em carteira')            
+            saldo_sol.append(troca_reais_sol)
+            print(f'Saldo em Ethereum: {troca_reais_sol:.4f}')
+
+            att_saldo_tia = float(saldo_prev_tia - amount_crypto)
+            print(f'Seu saldo em Tia é de: {att_saldo_tia:.4f}.')
+            saldo_tia.append(att_saldo_tia)
+
+        elif len(saldo_prev_sol) > 0: 
+            att_saldo_sol = float(saldo_prev_sol[-1] + troca_reais_sol)
+            saldo_sol.append(att_saldo_sol)
+            print(f'Saldo atualizado de Ethereum: {att_saldo_sol:.4f}')
+
+            att_saldo_tia = float(saldo_prev_tia - amount_crypto)
+            print(f'Seu saldo em Tia é de: {att_saldo_tia:.4f}.')
+            saldo_sol.append(att_saldo_tia)
+        else:
+            print(f'Swap tia p sol deu errado!')
 
     else:
         print('Deu errado o swap')
